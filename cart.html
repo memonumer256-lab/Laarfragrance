@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Cart - Laar Fragrance</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <img src="Images/Laar.png"
+             alt="Laar Fragrance Logo"
+             class="logo">
+
+        <nav>
+            <a href="Index.html">Home</a>
+            <a href="Index.html">Collection</a>
+            <a href="Index.html">About</a>
+            <a href="Index.html">Contact</a>
+            <a href="Index.html">Blog</a>
+        </nav>
+
+    </header>
+
+
+    <main class="cart-page">
+
+        <h1>Your Cart</h1>
+
+        <div id="cartPageItems">
+
+            <p>Your cart is empty.</p>
+
+        </div>
+
+
+        <div id="cartPageTotal"></div>
+
+
+        <div class="checkout-form" id="checkoutForm">
+
+    <h2>Delivery Details</h2>
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Your Name"
+        required>
+
+    <input
+        type="tel"
+        id="customerPhone"
+        placeholder="Mobile Number"
+        required>
+
+    <textarea
+        id="customerAddress"
+        placeholder="Complete Delivery Address"
+        required></textarea>
+
+    <button
+        type="button"
+        onclick="placeOrder()"
+        class="checkout-button">
+
+        PLACE ORDER
+
+    </button>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

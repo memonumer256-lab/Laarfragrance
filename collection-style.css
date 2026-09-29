@@ -1,0 +1,241 @@
+/* =========================
+   LAAR FRAGRANCE
+   COLLECTION PAGE
+========================= */
+
+.collection-page {
+    background: #f7f3ed;
+    color: #17130f;
+    min-height: 100vh;
+}
+
+/* HERO */
+
+.collection-hero {
+    text-align: center;
+    padding: 100px 6% 80px;
+}
+
+.collection-hero p {
+    color: #8b6f47;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.collection-hero h1 {
+    margin: 0 0 20px;
+    font-size: 52px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.collection-hero span {
+    color: #666;
+    font-size: 16px;
+}
+
+
+/* PRODUCT */
+
+.collection-product {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 0 6%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+/* IMAGE BOX */
+
+.collection-image {
+    background: #fff;
+    border: 1px solid #e1d8cc;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 380px;
+}
+
+
+/* PERFUME IMAGE */
+
+.collection-image img {
+    width: 70%;
+    max-width: 280px;
+    height: 300px;
+
+    object-fit: contain;
+    display: block;
+}
+
+
+/* DETAILS */
+
+.collection-details {
+    padding: 20px 0;
+}
+
+.collection-label {
+    color: #8b6f47;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.collection-details h2 {
+    font-size: 42px;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.collection-description {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.collection-details h3 {
+    font-size: 14px;
+    margin: 22px 0 10px;
+    letter-spacing: 1px;
+}
+
+.notes {
+    color: #555;
+    font-size: 14px;
+}
+
+
+/* SIZES */
+
+.collection-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.collection-sizes button {
+    background: transparent;
+    border: 1px solid #cfc3b5;
+
+    padding: 11px 14px;
+
+    color: #17130f;
+    font-size: 13px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.collection-sizes button:hover {
+    background: #17130f;
+    color: white;
+    border-color: #17130f;
+}
+
+
+/* SHOP BUTTON */
+
+.collection-shop-button {
+    margin-top: 28px;
+
+    width: 100%;
+    max-width: 240px;
+
+    padding: 15px 25px;
+
+    background: #17130f;
+    color: white;
+
+    border: 1px solid #17130f;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.collection-shop-button:hover {
+    background: #8b6f47;
+    border-color: #8b6f47;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .collection-hero {
+        padding: 70px 6% 55px;
+    }
+
+    .collection-hero h1 {
+        font-size: 36px;
+    }
+
+    .collection-hero span {
+        font-size: 14px;
+    }
+
+    .collection-product {
+        grid-template-columns: 1fr;
+        gap: 30px;
+
+        margin-bottom: 65px;
+        padding: 0 5%;
+    }
+
+    .collection-image {
+        min-height: 300px;
+    }
+
+    .collection-image img {
+        width: 65%;
+        max-width: 220px;
+        height: 230px;
+    }
+
+    .collection-details {
+        padding: 0;
+    }
+
+    .collection-details h2 {
+        font-size: 32px;
+    }
+
+    .collection-description {
+        font-size: 14px;
+    }
+
+    .collection-sizes {
+        gap: 8px;
+    }
+
+    .collection-sizes button {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+
+    .collection-shop-button {
+        max-width: 100%;
+    }
+}
+.collection-size-option.active {
+    background: #17130f;
+    color: #ffffff;
+    border-color: #17130f;
+}
