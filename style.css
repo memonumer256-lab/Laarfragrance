@@ -179,7 +179,6 @@ nav a {
     text-align: center;
 }
 
-.product-card img,
 .product-card img {
     width: 105%;
     height: 300px;
@@ -187,6 +186,8 @@ nav a {
     background: #eee7dc;
     margin-bottom: 20px;
     display: block;
+    cursor: pointer;
+    touch-action: manipulation;
 }
 .product-placeholder {
     display: flex;
