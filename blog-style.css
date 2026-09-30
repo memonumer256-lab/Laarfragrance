@@ -219,3 +219,25 @@
 .blog-read-more:hover {
     color: #8b6f47;
 }
+/* BLOG CARDS - KEEP EACH CARD INDEPENDENT */
+
+.blog-container {
+    align-items: start;
+}
+
+.blog-card {
+    height: fit-content;
+    align-self: start;
+}
+
+.blog-card-content {
+    height: auto;
+}
+
+.blog-full-content {
+    display: none;
+}
+
+.blog-full-content.show {
+    display: block;
+   }
