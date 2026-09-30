@@ -800,3 +800,63 @@ async function updateOrderStatus(orderId, newStatus) {
     }
 
 }
+/* IMAGE ZOOM */
+
+function openImagePopup(imageSrc, imageAlt) {
+
+    let popup = document.getElementById("imagePopup");
+    let popupImage = document.getElementById("popupImage");
+
+    if (!popup || !popupImage) {
+        return;
+    }
+
+    popupImage.src = imageSrc;
+    popupImage.alt = imageAlt || "";
+
+    popup.classList.add("active");
+}
+
+
+function closeImagePopup() {
+
+    let popup = document.getElementById("imagePopup");
+
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.remove("active");
+}
+
+
+/* PRODUCT + TESTER IMAGES */
+
+document.querySelectorAll(
+    ".product-card img, .tester-card img"
+).forEach(function(image) {
+
+    image.addEventListener("click", function() {
+
+        openImagePopup(
+            image.src,
+            image.alt
+        );
+
+    });
+
+});
+
+
+/* CLOSE WHEN BACKGROUND IS TOUCHED/CLICKED */
+
+document.getElementById("imagePopup")?.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+            closeImagePopup();
+        }
+
+    }
+);
