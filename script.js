@@ -630,7 +630,7 @@ async function loadOrders() {
     return;
 }
 
-let orderId = await response.json();
+let orders = await response.json();
 
         ordersList.innerHTML = "";
 
