@@ -30,11 +30,219 @@
         <p>Loading orders...</p>
     </div>
 
+<!-- PRODUCT MANAGEMENT -->
+
+<section class="admin-products">
+
+    <h2>Product Management</h2>
+
+    <div id="adminProductsList">
+
+        <p>Loading products...</p>
+
+    </div>
+
+</section>
+
+      
+<!-- SALE OFFERS MANAGEMENT -->
+
+<section class="admin-products">
+
+    <h2>Combo Packages Management</h2>
+
+    <p>Yahan se 4 combo packages ki image aur price change karein.</p>
+
+    <div id="adminSaleOffersList">
+        <p>Loading combo packages...</p>
+    </div>
+
+</section>
+
+      
+<!-- CUSTOMER REVIEWS -->
+
+<section class="admin-reviews">
+
+    <h2>Customer Reviews</h2>
+
+    <div id="adminReviewsList">
+        <p>Loading reviews...</p>
+    </div>
+
+</section>
+      <!-- BLOG MANAGEMENT -->
+
+<section class="admin-blog">
+
+    <h2>Blog Management</h2>
+
+    <div class="blog-admin-form">
+
+    <h3>Add / Edit Article</h3>
+
+    <input
+        type="hidden"
+        id="blogId"
+    >
+
+
+    <label for="blogTitle">
+        Article Title
+    </label>
+
+    <input
+        type="text"
+        id="blogTitle"
+        placeholder="Enter article title"
+    >
+
+
+    <label for="blogCategory">
+        Category
+    </label>
+
+    <input
+        type="text"
+        id="blogCategory"
+        placeholder="e.g. Perfume Guide"
+    >
+
+
+    <label for="blogImageFile">
+        Article Image
+    </label>
+
+    <input
+        type="file"
+        id="blogImageFile"
+        accept="image/jpeg,image/png,image/webp"
+    >
+
+    <input
+        type="hidden"
+        id="blogImage"
+    >
+
+
+    <label for="blogExcerpt">
+        Short Description
+    </label>
+
+    <textarea
+        id="blogExcerpt"
+        placeholder="Write a short description of the article"
+    ></textarea>
+
+
+    <label for="blogSeoTitle">
+        SEO Title
+    </label>
+
+    <small>
+        Auto-filled from Article Title
+    </small>
+
+    <input
+        type="text"
+        id="blogSeoTitle"
+        placeholder="SEO title"
+    >
+
+
+    <label for="blogSeoDescription">
+        SEO Description
+    </label>
+
+    <small>
+        Auto-filled from Short Description
+    </small>
+
+    <textarea
+        id="blogSeoDescription"
+        placeholder="SEO description"
+    ></textarea>
+
+
+    <label for="blogSlug">
+        URL Slug
+    </label>
+
+    <small>
+        Auto-filled from Article Title
+    </small>
+
+    <input
+        type="text"
+        id="blogSlug"
+        placeholder="url-slug"
+    >
+
+
+    <label for="blogContent">
+        Article Content
+    </label>
+
+    <textarea
+        id="blogContent"
+        placeholder="Write your article here..."
+    ></textarea>
+
+
+    <label for="blogStatus">
+        Article Status
+    </label>
+
+    <select id="blogStatus">
+
+        <option value="draft">
+            Draft
+        </option>
+
+        <option value="published">
+            Published
+        </option>
+
+    </select>
+
+
+    <div class="blog-admin-buttons">
+
+        <button
+            type="button"
+            onclick="saveBlogArticle()">
+
+            SAVE ARTICLE
+
+        </button>
+
+        <button
+            type="button"
+            onclick="clearBlogForm()">
+
+            CLEAR
+
+        </button>
+
+    </div>
+
+</div>
+
+    <div id="adminBlogList">
+
+        <p>Loading articles...</p>
+
+    </div>
+
+</section>
     </main>
 
 
     <script src="script.js"></script>
+    <script src="admin.js"></script>
+
+  <script src="sale-offers-admin.js"></script>
 
 </body>
 
-</html>
+                                        </html>
