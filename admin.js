@@ -1,4 +1,46 @@
 /* =========================
+   ADMIN LOGIN TOKEN HELPERS
+========================= */
+
+function getAdminToken() {
+
+    return localStorage.getItem(
+        "laarAdminToken"
+    );
+
+}
+
+
+/* Returns true (and sends admin to login) when the login has expired */
+
+function adminSessionExpired(status, text) {
+
+    if (
+        status === 401 ||
+        /jwt|expired/i.test(text || "")
+    ) {
+
+        alert(
+            "Admin login expire ho gaya hai. Dobara login karein."
+        );
+
+        localStorage.removeItem(
+            "laarAdminToken"
+        );
+
+        window.location.href =
+            "admin.html";
+
+        return true;
+
+    }
+
+    return false;
+
+}
+
+
+/* =========================
    PRODUCT MANAGEMENT
 ========================= */
 
@@ -219,6 +261,22 @@ async function loadAdminProducts() {
 
 async function saveProduct(productId) {
 
+    const token =
+        getAdminToken();
+
+    if (!token) {
+
+        alert(
+            "Please login first."
+        );
+
+        window.location.href =
+            "admin.html";
+
+        return;
+    }
+
+
     const price5Input =
         document.getElementById(
             "price5-" + productId
@@ -344,7 +402,7 @@ async function saveProduct(productId) {
 
                             "Authorization":
                                 "Bearer " +
-                                SUPABASE_KEY,
+                                token,
 
                             "Content-Type":
                                 testerFile.type
@@ -360,6 +418,15 @@ async function saveProduct(productId) {
 
                 const testerUploadError =
                     await testerUploadResponse.text();
+
+                if (
+                    adminSessionExpired(
+                        testerUploadResponse.status,
+                        testerUploadError
+                    )
+                ) {
+                    return;
+                }
 
                 console.error(
                     "Tester image upload error:",
@@ -429,7 +496,7 @@ async function saveProduct(productId) {
 
                             "Authorization":
                                 "Bearer " +
-                                SUPABASE_KEY,
+                                token,
 
                             "Content-Type":
                                 file.type
@@ -445,6 +512,15 @@ async function saveProduct(productId) {
 
                 const uploadError =
                     await uploadResponse.text();
+
+                if (
+                    adminSessionExpired(
+                        uploadResponse.status,
+                        uploadError
+                    )
+                ) {
+                    return;
+                }
 
                 console.error(
                     "50ml image upload error:",
@@ -535,7 +611,7 @@ async function saveProduct(productId) {
 
                         "Authorization":
                             "Bearer " +
-                            SUPABASE_KEY,
+                            token,
 
                         "Content-Type":
                             "application/json",
@@ -558,6 +634,15 @@ async function saveProduct(productId) {
 
             const updateError =
                 await response.text();
+
+            if (
+                adminSessionExpired(
+                    response.status,
+                    updateError
+                )
+            ) {
+                return;
+            }
 
             console.error(
                 "Product update error:",
