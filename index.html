@@ -2,8 +2,9 @@
 <html lang="en">
 
 
-    <!-- HEAD -->
-<head>
+  <!-- HEAD -->
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,11 +14,9 @@
 
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" type="image/png" href="Images/Laar.png">
-</head>
-    
-
+  </head>
 <body>
-
+  
     <!-- ANNOUNCEMENT BAR -->
 
     <div class="announcement-bar">
@@ -26,27 +25,30 @@
         </div>
     </div>
 
+
     <!-- HEADER -->
 
-<header>
+    <header>
 
-    <img src="Images/Laar.png"
-         alt="Laar Fragrance Logo"
-         class="logo">
+        <img src="Images/Laar.png"
+             alt="Laar Fragrance Logo"
+             class="logo">
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="collection.html">Collection</a>
-        <a href="about.html">About</a>
-        <a href="#">Contact</a>
-        <a href="blog.html">Blog</a>
-    </nav>
+        <nav>
+            <a href="#">Home</a>
+            <a href="collection.html">Collection</a>
+           <a href="combos.html">Combos</a>
+          <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+        </nav>
 
-    <div class="cart" onclick="openCart()">
-        &#128722;
-    </div>
+        <div class="cart" onclick="openCart()">
+            🛒
+        </div>
 
-</header>
+    </header>
+
 
     <!-- CART PANEL -->
 
@@ -112,7 +114,134 @@
 
     </section>
 
+<!-- COMBO DEALS STRIP -->
 
+<section class="combo-strip">
+
+    <p class="small-title">COMBO DEALS</p>
+
+    <h2>More Fragrance. More Value.</h2>
+
+    <div class="combo-marquee">
+        <div class="combo-track">
+
+            <a href="combos.html" class="combo-strip-card">
+                <span class="combo-strip-label">TESTER COMBO</span>
+                <h3>4 × 5ml Testers</h3>
+                <span class="combo-strip-price" data-combo-price="tester5">Rs. 1,000</span>
+                <span class="combo-strip-action">VIEW DEAL →</span>
+            </a>
+
+            <a href="combos.html" class="combo-strip-card">
+                <span class="combo-strip-label">TESTER COMBO</span>
+                <h3>4 × 10ml Testers</h3>
+                <span class="combo-strip-price" data-combo-price="tester10">Rs. 1,900</span>
+                <span class="combo-strip-action">VIEW DEAL →</span>
+            </a>
+
+            <a href="combos.html" class="combo-strip-card">
+                <span class="combo-strip-label">PERFUME COMBO</span>
+                <h3>2 × 30ml Perfumes</h3>
+                <span class="combo-strip-price" data-combo-price="perfume30">Rs. 3,000</span>
+                <span class="combo-strip-action">VIEW DEAL →</span>
+            </a>
+
+            <a href="combos.html" class="combo-strip-card">
+                <span class="combo-strip-label">FREE GIFT OFFER</span>
+                <h3>Buy 2 × 50ml</h3>
+                <span class="combo-strip-price">2 Testers FREE</span>
+                <span class="combo-strip-action">VIEW DEAL →</span>
+            </a>
+
+            <!-- same cards again (for the smooth loop) -->
+
+            <a href="combos.html" class="combo-strip-card" tabindex="-1" aria-hidden="true">
+                <span class="combo-strip-label">TESTER COMBO</span>
+                <h3>4 × 5ml Testers</h3>
+                <span class="combo-strip-price" data-combo-price="tester5">Rs. 1,000</span>
+                <span class="combo-strip-action">VIEW DEAL →</span>
+            </a>
+
+            <a href="combos.html" class="combo-strip-card" tabindex="-1" aria-hidden="true">
+                <span class="combo-strip-label">TESTER COMBO</span>
+                <h3>4 × 10ml Testers</h3>
+                <span class="combo-strip-price" data-combo-price="tester10">Rs. 1,900</span>
+                <span class="combo-strip-action">VIEW DEAL →</span>
+            </a>
+
+            <a href="combos.html" class="combo-strip-card" tabindex="-1" aria-hidden="true">
+                <span class="combo-strip-label">PERFUME COMBO</span>
+                <h3>2 × 30ml Perfumes</h3>
+                <span class="combo-strip-price" data-combo-price="perfume30">Rs. 3,000</span>
+                <span class="combo-strip-action">VIEW DEAL →</span>
+            </a>
+
+            <a href="combos.html" class="combo-strip-card" tabindex="-1" aria-hidden="true">
+                <span class="combo-strip-label">FREE GIFT OFFER</span>
+                <h3>Buy 2 × 50ml</h3>
+                <span class="combo-strip-price">2 Testers FREE</span>
+                <span class="combo-strip-action">VIEW DEAL →</span>
+            </a>
+
+        </div>
+    </div>
+
+    <a href="combos.html" class="combo-strip-button">VIEW ALL COMBOS</a>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", async function () {
+
+    try {
+
+        const response = await fetch(
+            SUPABASE_URL +
+            "/rest/v1/sale_offers?select=package_key,offer_price&active=eq.true",
+            {
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": "Bearer " + SUPABASE_KEY
+                }
+            }
+        );
+
+        if (!response.ok) {
+            return;
+        }
+
+        const offers = await response.json();
+
+        offers.forEach(function (offer) {
+
+            if (
+                Number(offer.offer_price) > 0 &&
+                ["tester5", "tester10", "perfume30"].includes(offer.package_key)
+            ) {
+
+                document
+                    .querySelectorAll('[data-combo-price="' + offer.package_key + '"]')
+                    .forEach(function (element) {
+
+                        element.textContent =
+                            "Rs. " +
+                            Number(offer.offer_price).toLocaleString("en-PK");
+
+                    });
+
+            }
+
+        });
+
+    } catch (error) {
+
+        console.log("Combo strip price error:", error);
+
+    }
+
+});
+</script>
+  
     <!-- INTRO -->
 
     <section class="intro">
@@ -150,11 +279,12 @@
         <div class="products">
 
 
+          
             <!-- PRODUCT 1 - BREEZE -->
 
             <div class="product-card">
 
-                <img src="./Images/Breeze1.jpg"
+                <img src=""
                      alt="Breeze Perfume">
 
                 <h3>
@@ -166,22 +296,22 @@
                 </p>
 
                 <span>
-                    From Rs. 349
+                   Starting From Rs. 349
                 </span>
 
-                <button onclick="addToCart('Breeze',349, 'Images/Breeze1.jpg')">
+                <button onclick="addToCart('Breeze',349)">
                     ADD TO CART
                 </button>
 
             </div>
 
 
-            <!-- PRODUCT 2 - RuBY OUD -->
+            <!-- PRODUCT 2 - RUBY OUD -->
 
             <div class="product-card">
 
-                <img src="./Images/Ruby.jpg"
-                     alt="Roby Oud Perfume">
+                <img src=""
+                     alt="Ruby Oud Perfume">
 
                 <h3>
                     Ruby Oud
@@ -192,10 +322,10 @@
                 </p>
 
                 <span>
-                    From Rs. 349
+                    Starting From Rs. 349
                 </span>
 
-                <button onclick="addToCart('Roby Oud', 349, 'Images/Ruby.jpg')">
+                <button onclick="addToCart('Roby Oud', 349)">
                     ADD TO CART
                 </button>
 
@@ -206,7 +336,7 @@
 
             <div class="product-card">
 
-                <img src="./Images/Blue.jpg"
+                <img src=""
                      alt="Blue Savage Perfume">
 
                 <h3>
@@ -219,10 +349,10 @@
                 </p>
 
                 <span>
-                    From Rs. 349
+                   Starting From Rs. 349
                 </span>
 
-                <button onclick="addToCart('Blue Savage', 349, 'Images/Blue.jpg')">
+                <button onclick="addToCart('Blue Savage', 349)">
                     ADD TO CART
                 </button>
 
@@ -233,7 +363,7 @@
 
             <div class="product-card">
 
-                <img src="./Images/Night.jpg"
+                <img src=""
                      alt="Secrete Night Perfume">
 
                 <h3>
@@ -245,10 +375,10 @@
                 </p>
 
                 <span>
-                    From Rs. 349
+                   Starting From Rs. 349
                 </span>
 
-                <button onclick="addToCart('Secrete Night', 349, 'Images/Night.jpg')">
+                <button onclick="addToCart('Secrete Night', 349)">
                     ADD TO CART
                 </button>
 
@@ -278,7 +408,7 @@
 
             <div class="tester-card">
 
-                <img src="Images/Breezet.jpg"
+                <img src=""
      alt="Breeze Tester">
 
                 <h3>
@@ -313,7 +443,7 @@
 
             <div class="tester-card">
 
-                <img src="Images/Rubyt.jpg"
+                <img src=""
      alt="Breeze Tester">
 
                 <h3 class="ruby-title">
@@ -347,7 +477,7 @@
 
             <div class="tester-card">
 
-                <img src="Images/Bluet.jpg"
+                <img src=""
      alt="Breeze Tester">
 
                 <h3>
@@ -382,12 +512,11 @@
 
             <div class="tester-card">
 
-                <img src="Images/Nightt.jpg"
+                <img src=""
      alt="Breeze Tester">
 
                 <h3>
-                    Secrete 
-                     Night
+                    Secrete Night
                 </h3>
 
 <span>
@@ -413,7 +542,7 @@
 </button>
             </div>
 
-        </>
+        </div>
 
     </section>
 
@@ -475,7 +604,117 @@
 
     </section>
 
+<!-- CUSTOMER REVIEWS -->
 
+<section class="reviews-section">
+
+    <p class="small-title">
+        CUSTOMER LOVE
+    </p>
+
+    <h2>
+        What Our Customers Say
+    </h2>
+
+    <div id="reviewsList" class="reviews-list">
+        <p class="reviews-loading">Loading reviews...</p>
+    </div>
+
+
+    <!-- WRITE REVIEW -->
+
+    <div class="review-form-box">
+
+        <h3>
+            Share Your Experience
+        </h3>
+
+        <input
+            type="text"
+            id="reviewName"
+            placeholder="Your Name"
+        >
+
+        <select id="reviewPerfume">
+
+            <option value="">
+                Select Perfume
+            </option>
+
+            <option value="Breeze">
+                Breeze
+            </option>
+
+            <option value="Ruby Oud">
+                Ruby Oud
+            </option>
+
+            <option value="Blue Savage">
+                Blue Savage
+            </option>
+
+            <option value="Secrete Night">
+                Secrete Night
+            </option>
+
+        </select>
+
+
+        <div class="rating-input">
+
+            <span
+                class="rating-star"
+                data-rating="1">
+                ★
+            </span>
+
+            <span
+                class="rating-star"
+                data-rating="2">
+                ★
+            </span>
+
+            <span
+                class="rating-star"
+                data-rating="3">
+                ★
+            </span>
+
+            <span
+                class="rating-star"
+                data-rating="4">
+                ★
+            </span>
+
+            <span
+                class="rating-star"
+                data-rating="5">
+                ★
+            </span>
+
+        </div>
+
+
+        <textarea
+            id="reviewComment"
+            placeholder="Write your review..."
+        ></textarea>
+
+
+        <button
+            type="button"
+            onclick="submitReview()">
+            SUBMIT REVIEW
+        </button>
+
+        <p
+            id="reviewMessage"
+            class="review-message">
+        </p>
+
+    </div>
+
+</section>
     <!-- FOOTER -->
 
     <footer>
@@ -497,24 +736,24 @@
 </a>
 <br>
 
-      <h3 class="footer-contact-title">
-    Contact Us at:
-      </h3>
+      <a href="contact.html" class="footer-contact-button">
+    CONTACT US
+      </a>
 
       <div class="social-links">
 
     <a href="https://www.facebook.com/Laarfragrance"
-       target="_blank">
+       target="_blank" rel="noopener">
         Facebook
     </a>
 
     <a href="https://www.instagram.com/Laarfragrance"
-       target="_blank">
+       target="_blank" target="_blank" rel="noopener">
         Instagram
     </a>
 
     <a href="https://wa.me/923322522468"
-       target="_blank">
+       target="_blank" rel="noopener">
         WhatsApp
     </a>
 
@@ -535,6 +774,7 @@
 
 </div>
   <script src="script.js"></script>
+  <script src="products.js"></script>
 </body>
 
-</html>
+    </html>
