@@ -89,13 +89,11 @@ async function loadHomeProducts() {
                         "img"
                     );
 
-                if (
-                    image &&
-                    product.image_url
-                ) {
+                if (image && product.image_url) {
 
-                    image.src =
-                        product.image_url;
+    image.src = product.image_url;
+
+    image.alt = product.name + " Perfume";
 
                 }
 
@@ -183,12 +181,13 @@ async function loadHomeProducts() {
                     productMap[testerName];
 
                 if (
-                    product &&
-                    product.tester_image_url
-                ) {
+    product &&
+    product.tester_image_url
+) {
 
-                    image.src =
-                        product.tester_image_url;
+    image.src = product.tester_image_url;
+
+    image.alt = product.name + " Perfume Tester";
 
                 }
 
