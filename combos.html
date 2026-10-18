@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Combo Deals | Laar Fragrance</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./combos.css">
+</head>
+
+<body>
+
+<header class="combo-header">
+    <a href="./index.html" class="combo-logo">
+        <img src="./Images/Laar.png" alt="Laar Fragrance">
+    </a>
+
+    <a href="./index.html" class="combo-home-link">
+        Home
+    </a>
+</header>
+
+<main class="combos-container">
+
+    <section class="combos-heading">
+        <p>LAAR FRAGRANCE</p>
+        <h1>Combo Deals</h1>
+        <span>More Fragrance. More Value.</span>
+    </section>
+
+    <!-- PACKAGE 1 -->
+
+    <section class="combo-card">
+
+        <div class="combo-image-box">
+            <img data-combo-image="tester5"
+                 alt="Four 5ml perfume testers">
+        </div>
+
+        <div class="combo-details">
+            <span class="combo-label">TESTER COMBO</span>
+
+            <h2>4 × 5ml Testers</h2>
+
+            <p class="combo-description">
+                Choose any four 5ml testers.
+            </p>
+
+            <p class="combo-old-price">
+                Regular Price: Rs. 1,396
+            </p>
+
+            <p class="combo-price">
+                Get in Just Rs. 1,000
+            </p>
+
+            <div class="combo-selectors">
+                <label>Tester 1
+                    <select class="tester5-select">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Tester 2
+                    <select class="tester5-select">
+                        <option>Breeze</option>
+                        <option selected>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Tester 3
+                    <select class="tester5-select">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option selected>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Tester 4
+                    <select class="tester5-select">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option selected>Secrete Night</option>
+                    </select>
+                </label>
+            </div>
+
+            <button class="combo-button"
+                    onclick="addTesterCombo('5ml', 1000, 1396, this)">
+                ADD COMBO TO CART
+            </button>
+        </div>
+    </section>
+
+
+    <!-- PACKAGE 2 -->
+
+    <section class="combo-card">
+
+        <div class="combo-image-box">
+            <img data-combo-image="tester10"
+                 alt="Four 10ml perfume testers">
+        </div>
+
+        <div class="combo-details">
+            <span class="combo-label">TESTER COMBO</span>
+
+            <h2>4 × 10ml Testers</h2>
+
+            <p class="combo-description">
+                Choose any four 10ml testers.
+            </p>
+
+            <p class="combo-old-price">
+                Regular Price: Rs. 2,400
+            </p>
+
+            <p class="combo-price">
+                Get in Just Rs. 1,900
+            </p>
+
+            <div class="combo-selectors">
+                <label>Tester 1
+                    <select class="tester10-select">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Tester 2
+                    <select class="tester10-select">
+                        <option>Breeze</option>
+                        <option selected>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Tester 3
+                    <select class="tester10-select">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option selected>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Tester 4
+                    <select class="tester10-select">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option selected>Secrete Night</option>
+                    </select>
+                </label>
+            </div>
+
+            <button class="combo-button"
+                    onclick="addTesterCombo('10ml', 1900, 2400, this)">
+                ADD COMBO TO CART
+            </button>
+        </div>
+    </section>
+
+
+    <!-- PACKAGE 3 -->
+
+    <section class="combo-card">
+
+        <div class="combo-image-box">
+            <img data-combo-image="perfume30"
+                 alt="Two 30ml perfumes">
+        </div>
+
+        <div class="combo-details">
+            <span class="combo-label">PERFUME COMBO</span>
+
+            <h2>2 × 30ml Perfumes</h2>
+
+            <p class="combo-description">
+                Choose any two 30ml perfumes.
+            </p>
+
+            <p class="combo-old-price">
+                Regular Price: Rs. 3,600
+            </p>
+
+            <p class="combo-price">
+                Get in Just Rs. 3,000
+            </p>
+
+            <div class="combo-selectors">
+                <label>First Perfume
+                    <select id="perfume30a">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Second Perfume
+                    <select id="perfume30b">
+                        <option>Breeze</option>
+                        <option selected>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+            </div>
+
+            <button class="combo-button"
+                    onclick="addPerfume30Combo()">
+                ADD COMBO TO CART
+            </button>
+        </div>
+    </section>
+
+
+    <!-- PACKAGE 4 -->
+
+    <section class="combo-card">
+
+        <div class="combo-image-box">
+            <img data-combo-image="perfume50"
+                 alt="Two 50ml perfumes">
+        </div>
+
+        <div class="combo-details">
+            <span class="combo-label">FREE GIFT OFFER</span>
+
+            <h2>Buy 2 × 50ml Perfumes</h2>
+
+            <p class="combo-description">
+                Choose any two 50ml perfumes and get
+                two 10ml testers of your choice FREE.
+            </p>
+
+            <p class="combo-free">
+                2 × 10ml TESTERS — FREE
+            </p>
+
+            <p class="combo-price">
+                50ml perfumes at their regular prices
+            </p>
+
+            <div class="combo-selectors">
+                <label>First 50ml Perfume
+                    <select id="perfume50a">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Second 50ml Perfume
+                    <select id="perfume50b">
+                        <option>Breeze</option>
+                        <option selected>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Free 10ml Tester 1
+                    <select id="freeTesterA">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option>Secrete Night</option>
+                    </select>
+                </label>
+
+                <label>Free 10ml Tester 2
+                    <select id="freeTesterB">
+                        <option>Breeze</option>
+                        <option>Ruby Oud</option>
+                        <option>Blue Savage</option>
+                        <option selected>Secrete Night</option>
+                    </select>
+                </label>
+            </div>
+
+            <button class="combo-button"
+                    onclick="addPerfume50Combo()">
+                ADD COMBO TO CART
+            </button>
+        </div>
+    </section>
+
+</main>
+
+<footer class="combo-footer">
+    © Laar Fragrance
+</footer>
+
+<script src="./script.js"></script>
+<script src="./combos.js"></script>
+
+</body>
+</html>
