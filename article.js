@@ -598,29 +598,25 @@ async function loadSingleBlogArticle() {
 
         /* ARTICLE CANONICAL */
 
-        let canonical =
-            document.querySelector(
-                'link[rel="canonical"]'
-            );
+let canonical =
+    document.querySelector(
+        'link[rel="canonical"]'
+    );
 
+if (!canonical) {
 
-        if (!canonical) {
+    canonical =
+        document.createElement("link");
 
-            canonical =
-                document.createElement("link");
+    canonical.rel = "canonical";
 
-            canonical.rel =
-                "canonical";
+    document.head.appendChild(canonical);
 
-            document.head.appendChild(
-                canonical
-            );
+}
 
-        }
-
-
-        canonical.href =
-            window.location.href;
+canonical.href =
+    "https://laarfragrance.com/article.html?slug=" +
+    encodeURIComponent(blog.slug);
 
 
         /* ARTICLE OPEN GRAPH */
