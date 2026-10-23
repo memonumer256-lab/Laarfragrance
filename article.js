@@ -615,8 +615,8 @@ if (!canonical) {
 }
 
 canonical.href =
-    "https://laarfragrance.com/article.html?slug=" +
-    encodeURIComponent(blog.slug);
+    "https://laarfragrance.com/blog/" +
+    encodeURIComponent(blog.slug) + ".html";
 
 
         /* ARTICLE OPEN GRAPH */
