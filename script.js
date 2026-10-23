@@ -3864,10 +3864,10 @@ async function loadPublicBlogs() {
 
 
                     window.location.href =
-                        "article.html?slug=" +
-                        encodeURIComponent(
-                            blog.slug
-                        );
+    "/blog/" +
+    encodeURIComponent(
+        blog.slug
+    ) + ".html";
 
                 }
             );
