@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
     <url>
         <loc>https://laarfragrance.com/</loc>
     </url>
-
     <url>
         <loc>https://laarfragrance.com/collection.html</loc>
     </url>
-
     <url>
         <loc>https://laarfragrance.com/combos.html</loc>
     </url>
-
     <url>
         <loc>https://laarfragrance.com/about.html</loc>
     </url>
-
     <url>
         <loc>https://laarfragrance.com/contact.html</loc>
     </url>
-
     <url>
         <loc>https://laarfragrance.com/blog.html</loc>
-  </url>
-
-    <url>
-        <loc>https://laarfragrance.com/article.html?slug=best-perfumes-for-men-finding-your-signature-scent</loc>
     </url>
-    
     <url>
-        <loc>https://laarfragrance.com/article.html?slug=how-to-make-your-perfume-last-longer</loc>
+        <loc>https://laarfragrance.com/blog/best-perfumes-for-men-finding-your-signature-scent.html</loc>
+        <lastmod>2026-10-20</lastmod>
     </url>
-
+    <url>
+        <loc>https://laarfragrance.com/blog/how-to-make-your-perfume-last-longer.html</loc>
+        <lastmod>2026-10-11</lastmod>
+    </url>
 </urlset>
