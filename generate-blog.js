@@ -42,6 +42,8 @@ function renderContent(content) {
     .map((raw) => raw.trim())
     .filter(Boolean)
     .map((p) => {
+      // Agar admin ka content pehle se HTML hai (<p>, <h2> wagera), to jaisa hai waisa rakho
+      if (p.startsWith("<")) return p;
       if (p.startsWith("### ")) return `<h3>${inline(p.slice(4))}</h3>`;
       if (p.startsWith("## ")) return `<h2>${inline(p.slice(3))}</h2>`;
       return `<p>${inline(p)}</p>`;
