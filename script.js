@@ -3827,57 +3827,37 @@ async function loadPublicBlogs() {
                 fullContent
             );
 
+             
+             /* VIEW ARTICLE */
 
-            /* VIEW ARTICLE */
+               if (blog.slug) {
 
-            let articleButton =
-                document.createElement(
-                    "button"
+                let articleButton =
+                    document.createElement("a");
+
+                articleButton.className =
+                    "blog-view-article";
+
+                articleButton.href =
+                    "/blog/" +
+                    encodeURIComponent(blog.slug) +
+                    ".html";
+
+                articleButton.textContent =
+                    "VIEW ARTICLE";
+
+                articleButton.style.display =
+                    "inline-block";
+
+                articleButton.style.textDecoration =
+                    "none";
+
+                content.appendChild(
+                    articleButton
                 );
 
-
-            articleButton.type =
-                "button";
-
-
-            articleButton.className =
-                "blog-view-article";
-
-
-            articleButton.textContent =
-                "VIEW ARTICLE";
-
-
-            articleButton.addEventListener(
-                "click",
-                function() {
-
-                    if (!blog.slug) {
-
-                        alert(
-                            "Article link available nahi hai."
-                        );
-
-                        return;
-
-                    }
-
-
-                    window.location.href =
-    "/blog/" +
-    encodeURIComponent(
-        blog.slug
-    ) + ".html";
-
-                }
-            );
-
-
-            content.appendChild(
-                articleButton
-            );
-
-
+            }
+            
             article.appendChild(
                 content
             );
