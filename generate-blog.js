@@ -51,7 +51,58 @@ function renderContent(content) {
     .join("\n");
 }
 
-function renderPage(blog) {
+function renderPrevNext(prev, next) {
+  if (!prev && !next) return "";
+
+  const linkStyle = "display:block; flex:1 1 220px; text-decoration:none; color:#17130f;";
+  const labelStyle =
+    "display:block; font-size:11px; letter-spacing:2px; font-weight:bold; color:#8b6f47; margin-bottom:8px;";
+  const titleStyle = "display:block; font-size:16px; font-weight:600; line-height:1.4;";
+
+  let html =
+    '<div class="article-prev-next" role="navigation" aria-label="More articles" ' +
+    'style="display:flex; flex-wrap:wrap; gap:25px; margin-top:50px; padding-top:25px; border-top:1px solid #ddd4c8;">';
+
+  if (prev) {
+    html +=
+      `<a href="/${OUT_DIR}/${prev.slug}.html" style="${linkStyle}">` +
+      `<span style="${labelStyle}">← PREVIOUS ARTICLE</span>` +
+      `<span style="${titleStyle}">${esc(prev.title)}</span></a>`;
+  }
+  if (next) {
+    html +=
+      `<a href="/${OUT_DIR}/${next.slug}.html" style="${linkStyle} text-align:right; margin-left:auto;">` +
+      `<span style="${labelStyle}">NEXT ARTICLE →</span>` +
+      `<span style="${titleStyle}">${esc(next.title)}</span></a>`;
+  }
+  return html + "</div>";
+}
+
+function renderRelated(related) {
+  if (!related || related.length === 0) return "";
+
+  const cards = related
+    .map((b) => {
+      const link = `/${OUT_DIR}/${b.slug}.html`;
+      return (
+        '<article class="related-article-card">' +
+        (b.image_url ? `<img src="${esc(b.image_url)}" alt="${esc(b.title)}">` : "") +
+        '<div class="related-article-content">' +
+        `<div class="related-article-category">${esc(b.category || "FRAGRANCE")}</div>` +
+        `<h3><a href="${link}" style="color: inherit; text-decoration: none;">${esc(b.title)}</a></h3>` +
+        `<a class="related-article-button" href="${link}" style="display:inline-block; text-decoration:none;">READ ARTICLE</a>` +
+        "</div></article>"
+      );
+    })
+    .join("");
+
+  return (
+    '<section class="related-articles"><h2>Related Articles</h2>' +
+    `<div class="related-articles-grid">${cards}</div></section>`
+  );
+}
+
+function renderPage(blog, prev, next, related) {
   const url = `${SITE}/${OUT_DIR}/${blog.slug}.html`;
   const title = blog.seo_title || blog.title || "Laar Fragrance Blog";
   const desc = blog.seo_description || blog.excerpt || "";
@@ -113,6 +164,8 @@ function renderPage(blog) {
             <div class="article-content">
 ${renderContent(blog.content)}
             </div>
+            ${renderPrevNext(prev, next)}
+            ${renderRelated(related)}
         </article>
     </main>
 
@@ -167,10 +220,20 @@ async function main() {
   }
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
-  for (const blog of blogs) {
-    fs.writeFileSync(path.join(OUT_DIR, blog.slug + ".html"), renderPage(blog));
+  // blogs naye se purane order main hain (created_at desc)
+  blogs.forEach((blog, i) => {
+    const next = i > 0 ? blogs[i - 1] : null; // zyada naya article
+    const prev = i < blogs.length - 1 ? blogs[i + 1] : null; // zyada purana article
+    const related = blogs
+      .filter((b) => b.slug !== blog.slug && b.category && b.category === blog.category)
+      .slice(0, 3);
+
+    fs.writeFileSync(
+      path.join(OUT_DIR, blog.slug + ".html"),
+      renderPage(blog, prev, next, related)
+    );
     console.log("Bana:", `${OUT_DIR}/${blog.slug}.html`);
-  }
+  });
 
   // Jo article admin se delete/unpublish ho gaye, unki static files bhi hata do
   const keep = new Set(blogs.map((b) => b.slug + ".html"));
